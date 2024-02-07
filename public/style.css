@@ -1,0 +1,96 @@
+/* Import the VT323 font */
+@font-face {
+    font-family: 'VT323';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/vt323@latest/latin-400-normal.woff2) format('woff2'),
+         url(https://cdn.jsdelivr.net/fontsource/fonts/vt323@latest/latin-400-normal.woff) format('woff');
+}
+
+/* Global styles for the body and HTML */
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #000;
+    color: #0f0;
+    font-family: 'VT323', monospace;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Globe container */
+#globe-container {
+    width: 300px; /* Size of the globe */
+    height: 300px; /* Size of the globe */
+    position: fixed; /* Fixed position */
+    top: 0%; /* Adjust this to move the globe up */
+    left: 50%;
+    transform: translate(-50%, -10%); /* Adjust this to fine-tune the globe's position */
+    z-index: 5; /* Make sure it's above other elements */
+}
+
+/* Terminal container */
+#terminal-container {
+    width: 800px; /* Fixed width for larger screens */
+    min-height: 600px; /* Fixed height for larger screens */
+    position: fixed; /* Fixed position */
+    top: 10%; /* Start at the middle of the screen */
+    left: 50%;
+    transform: translate(-50%, 20%); /* Adjust the Y offset to move just below the globe */
+    z-index: 4; /* Ensure it's below the globe */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align input at the bottom */
+}
+
+/* Terminal */
+#terminal {
+    background-color: #000;
+    color: #0f0;
+    font-size: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #333;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* Style adjustments for the input field */
+#input {
+    width: calc(100% - 40px);
+    height: 30px;
+    background: #000;
+    border: none;
+    color: #0f0;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    caret-color: #0f0;
+    padding: 10px 20px;
+    resize: none; /* Disable resizing */
+}
+
+#input:focus {
+    outline: none;
+}
+
+#input::placeholder {
+    color: #0a0;
+}
+
+/* Responsive design adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    #terminal-container {
+        width: 95%;
+        height: 50vh;
+        top: 250px; /* Adjust top position for smaller screens */
+    }
+    #terminal {
+        height: calc(100% - 50px); /* Adjust height for smaller screens */
+        font-size: 16px;
+    }
+    #globe-container {
+        width: 200px;
+        height: 200px;
+        top: 10px; /* Adjust top position for smaller screens */
+    }
+}
