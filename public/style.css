@@ -1,0 +1,65 @@
+/* Import the VT323 font */
+@font-face {
+    font-family: 'VT323';
+    font-style: normal;
+    font-weight:  400;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/vt323@latest/latin-400-normal.woff2) format('woff2'),
+         url(https://cdn.jsdelivr.net/fontsource/fonts/vt323@latest/latin-400-normal.woff) format('woff');
+  }
+  
+  /* Global styles for the body and HTML */
+  body, html {
+    height:  100%;
+    margin:  0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+  }
+  
+  /* Styles for the terminal container */
+  #terminal {
+    position: absolute;
+    top:  50%;
+    left:  50%;
+    width:  50%;
+    height:  90%;
+    transform: translate(-50%, -50%);
+    background-color: #000000;
+    color: #00ff00;
+    font-family: 'VT323', monospace;
+    font-size:  1em;
+    white-space: pre-wrap;
+    word-break: keep-all;
+    padding:  1em;
+    box-sizing: border-box;
+  }
+  
+  /* Responsive design for mobile devices */
+  @media screen and (max-width:  480px) {
+    #terminal {
+      width:  100%;
+      height: auto;
+      transform: translate(-50%, -50%);
+    }
+  }
+  
+
+#input {
+    position: relative;
+    caret-color: transparent;
+}
+
+#input[contenteditable="true"]:after {
+    content: "■";
+    animation: cursor  1s infinite;
+    animation-timing-function: step-end;
+    margin-left:  1px;
+}
+
+#input:before {
+    content: ">";
+    position: absolute;
+    padding-left:  1.5rem;
+    left:  0;
+}
